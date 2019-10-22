@@ -7,5 +7,18 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "banco-mundial-e2e": {
+      "tags": []
+    },
+    "banco-mundial": {
+      "tags": []
+    },
+    "shared-domain": {
+      "tags": []
+    },
+    "shared-layout": {
+      "tags": []
+    }
+  }
 }

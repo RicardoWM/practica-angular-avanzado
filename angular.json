@@ -1,7 +1,197 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "banco-mundial": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/banco-mundial",
+      "sourceRoot": "apps/banco-mundial/src",
+      "prefix": "prac-banco",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/banco-mundial",
+            "index": "apps/banco-mundial/src/index.html",
+            "main": "apps/banco-mundial/src/main.ts",
+            "polyfills": "apps/banco-mundial/src/polyfills.ts",
+            "tsConfig": "apps/banco-mundial/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/banco-mundial/src/favicon.ico",
+              "apps/banco-mundial/src/assets"
+            ],
+            "styles": ["apps/banco-mundial/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/banco-mundial/src/environments/environment.ts",
+                  "with": "apps/banco-mundial/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "banco-mundial:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "banco-mundial:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "banco-mundial:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/banco-mundial/tsconfig.app.json",
+              "apps/banco-mundial/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/banco-mundial/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/banco-mundial/jest.config.js",
+            "tsConfig": "apps/banco-mundial/tsconfig.spec.json",
+            "setupFile": "apps/banco-mundial/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "banco-mundial-e2e": {
+      "root": "apps/banco-mundial-e2e",
+      "sourceRoot": "apps/banco-mundial-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/banco-mundial-e2e/cypress.json",
+            "tsConfig": "apps/banco-mundial-e2e/tsconfig.e2e.json",
+            "devServerTarget": "banco-mundial:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "banco-mundial:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/banco-mundial-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/banco-mundial-e2e/**"]
+          }
+        }
+      }
+    },
+    "shared-domain": {
+      "root": "libs/shared/domain",
+      "sourceRoot": "libs/shared/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/domain/tsconfig.lib.json",
+              "libs/shared/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/domain/jest.config.js",
+            "tsConfig": "libs/shared/domain/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "shared-layout": {
+      "projectType": "library",
+      "root": "libs/shared/layout",
+      "sourceRoot": "libs/shared/layout/src",
+      "prefix": "rg-lay",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/layout/tsconfig.lib.json",
+              "libs/shared/layout/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/layout/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/layout/jest.config.js",
+            "tsConfig": "libs/shared/layout/tsconfig.spec.json",
+            "setupFile": "libs/shared/layout/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "banco-mundial"
 }
