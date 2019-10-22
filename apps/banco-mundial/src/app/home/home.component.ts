@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { RegionesHomeService } from './regiones-home.service';
 
 @Component({
   selector: 'prac-banco-home',
@@ -8,9 +9,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public regionesService: RegionesHomeService
+  ) { }
 
   ngOnInit() {
+    this.regionesService.getRegiones();
   }
 
 }
