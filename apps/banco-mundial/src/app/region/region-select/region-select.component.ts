@@ -9,7 +9,7 @@ import { Region } from '../../home/region.model';
 })
 export class RegionSelectComponent implements OnInit {
 
-  @Input() region: Region;
+  @Input() public region: Region;
 
   constructor() { }
 
