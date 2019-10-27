@@ -1,1 +1,3 @@
-<prac-banco-region-select [region]="regionPaisesService.region$ | async"></prac-banco-region-select>
+<div *ngIf="region$ | async as region">
+    <prac-banco-region-select [region]="region"></prac-banco-region-select>
+</div>

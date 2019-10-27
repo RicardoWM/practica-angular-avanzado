@@ -1,5 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RegionPaisesService } from '../region-paises.service';
+import { RegionesDataFacade } from '../store/regiones-data/regiones-data.service';
+import { Observable } from 'rxjs';
+import { Region } from '../store/regiones-data/region.model';
 
 @Component({
   selector: 'prac-banco-region',
@@ -9,12 +12,15 @@ import { RegionPaisesService } from '../region-paises.service';
 })
 export class RegionComponent implements OnInit {
 
+  public region$: Observable<Region>;
+
   constructor(
-    public regionPaisesService: RegionPaisesService
+    public regionPaisesService: RegionPaisesService,
+    public regionDataFacade: RegionesDataFacade
   ) { }
 
   ngOnInit() {
-    console.log(this.regionPaisesService.region);
+    this.region$ = this.regionDataFacade.getRegion$();
   }
 
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RegionesHomeService } from '../regiones-home.service';
 import { RegionPaisesService } from '../../region/region-paises.service';
-import { Region } from '../region.model';
+import { Region } from '../../region/store/regiones-data/region.model';
 import { Router } from '@angular/router';
+import { RegionesDataFacade } from '../../region/store/regiones-data/regiones-data.service';
 
 @Component({
   selector: 'prac-banco-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public regionesService: RegionesHomeService,
-    private regionPaisesService: RegionPaisesService,
+    private regionDataFacade: RegionesDataFacade,
     private router: Router
   ) { }
 
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   selectRegion(region: Region) {
-    this.regionPaisesService.setRegion(region);
+    this.regionDataFacade.changeRegion(region);
     this.router.navigate(['/region']);
   }
 

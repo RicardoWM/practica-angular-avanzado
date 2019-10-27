@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Region } from './region.model';
+import { Region } from '../region/store/regiones-data/region.model';
 
 @Injectable()
 
@@ -32,8 +32,6 @@ export class RegionesHomeService {
           this.regiones = regiones;
           this.regiones$.next(this.regiones);
         }
-        console.log(this.regiones);
-
       }
     )
   }

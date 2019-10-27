@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Region } from '../home/region.model';
+import { Region } from './store/regiones-data/region.model';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Pais } from './pais.model';
+import { Pais } from './store/regiones-data/pais.model';
 import { map } from 'rxjs/operators';
 
 
@@ -22,8 +22,6 @@ export class RegionPaisesService {
   setRegion(region: Region) {
     this.region = {...region};
     this.region$.next({...this.region});
-    console.log(this.region$);
-    console.log(this.region);
   }
 
   public selectRegion$ = () => this.region$.asObservable();
@@ -47,8 +45,6 @@ export class RegionPaisesService {
           this.regiones = regiones;
           this.regiones$.next(this.regiones);
         }
-        console.log(this.regiones);
-
       }
     )
   } */

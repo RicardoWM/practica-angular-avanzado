@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { Region } from '../region.model';
+import { Region } from '../../region/store/regiones-data/region.model';
 
 @Component({
   selector: 'prac-banco-regiones',
