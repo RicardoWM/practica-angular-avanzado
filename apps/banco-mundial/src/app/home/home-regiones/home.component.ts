@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { RegionesHomeService } from './regiones-home.service';
+import { RegionesHomeService } from '../regiones-home.service';
 
 @Component({
   selector: 'prac-banco-home',

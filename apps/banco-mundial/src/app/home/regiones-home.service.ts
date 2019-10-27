@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { Region } from './regiones.model';
 
 @Injectable()
 
@@ -9,8 +10,8 @@ export class RegionesHomeService {
 
   private urlApiRegiones
   = 'http://api.worldbank.org/v2/region/?format=json'
-  public regiones;
-  public regiones$ = new BehaviorSubject<any>(undefined);
+  public regiones: Region[];
+  public regiones$ = new BehaviorSubject<Region[]>([]);
 
   constructor(
     private http: HttpClient
