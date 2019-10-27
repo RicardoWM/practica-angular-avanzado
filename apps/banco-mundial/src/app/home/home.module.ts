@@ -6,6 +6,7 @@ import { HomeComponent } from './home-regiones/home.component';
 import { RegionesHomeService } from './regiones-home.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RegionesComponent } from './regiones/regiones.component';
+import { RegionPaisesService } from '../region/region-paises.service';
 
 @NgModule({
   declarations: [HomeComponent, RegionesComponent],
@@ -15,7 +16,8 @@ import { RegionesComponent } from './regiones/regiones.component';
     HttpClientModule
   ],
   providers: [
-    RegionesHomeService
+    RegionesHomeService,
+    RegionPaisesService
   ]
 })
 export class HomeModule { }

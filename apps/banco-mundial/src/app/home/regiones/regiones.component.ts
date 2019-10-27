@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Region } from '../regiones.model';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Region } from '../region.model';
 
 @Component({
   selector: 'prac-banco-regiones',
@@ -10,10 +10,17 @@ import { Region } from '../regiones.model';
 export class RegionesComponent implements OnInit {
 
   @Input() public regiones: Region[];
+  @Output() public choose = new EventEmitter<Region>();
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  chooseRegion(region: Region) {
+    this.choose.emit(region);
+  }
+
+
 
 }

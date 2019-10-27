@@ -1,1 +1,1 @@
-<prac-banco-regiones [regiones]="regionesService.regiones$ | async"></prac-banco-regiones>
+<prac-banco-regiones [regiones]="regionesService.regiones$ | async" (choose)="selectRegion($event)"></prac-banco-regiones>
