@@ -4,6 +4,8 @@ import * as RegionDataActions from './regiones-data.actions';
 import * as RegionDataSelectors from './regiones-data.selectors';
 import { Region } from './region.model';
 import { Observable } from 'rxjs';
+import { Pais } from './pais.model';
+import { loadPaises } from './regiones-data.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +24,21 @@ export class RegionesDataFacade {
       );
     }
 
+    public loadPaises(paises: Pais[]) {
+      this.store.dispatch(
+        RegionDataActions.loadPaises({
+          listPaises: [...paises]
+        })
+      );
+    }
+
+
     public getRegion$(): Observable<Region> {
       return this.store.select(RegionDataSelectors.getRegion);
+    }
+
+    public getPaises$(): Observable<Pais[]> {
+      return this.store.select(RegionDataSelectors.getPaises);
     }
 
 

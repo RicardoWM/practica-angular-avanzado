@@ -1,11 +1,14 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as RegionesDataActions from './regiones-data.actions';
 import { Region } from './region.model';
+import { Pais } from './pais.model';
+import { loadPaises } from './regiones-data.actions';
 
 export const regionesDataFeatureKey = 'regionesData';
 
 export interface State {
-  region: Region
+  region: Region,
+  paises: Pais[]
 }
 
 export const initialState: State = {
@@ -14,7 +17,8 @@ export const initialState: State = {
     code: '',
     iso2code: '',
     name: ''
-  }
+  },
+  paises: []
 };
 
 
@@ -26,7 +30,13 @@ const regionesDataReducer = createReducer(
     return {
       ...state,
       region: selectRegion
-    }
+    };
+  }),
+  on(RegionesDataActions.loadPaises, (state, {listPaises}) => {
+    return {
+      ...state,
+      paises: listPaises
+    };
   })
 );
 

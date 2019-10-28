@@ -9,3 +9,9 @@ export const getRegion = createSelector(
   getRegionDataState,
   (state: State) => state.region
 )
+
+
+export const getPaises = createSelector(
+  getRegionDataState,
+  (state: State) => state.paises
+)

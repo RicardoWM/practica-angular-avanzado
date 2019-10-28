@@ -8,10 +8,6 @@ import { RegionSelectComponent } from './region/region-select/region-select.comp
 import { HttpClientModule } from '@angular/common/http';
 import { PaisComponent } from './pais/pais.component';
 import { PaisViewComponent } from './pais/pais-view/pais-view.component';
-import { StoreModule } from '@ngrx/store';
-import * as fromRegionesData from './store/regiones-data/regiones-data.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { RegionesDataEffects } from './store/regiones-data/regiones-data.effects';
 
 
 
@@ -20,9 +16,7 @@ import { RegionesDataEffects } from './store/regiones-data/regiones-data.effects
   imports: [
     CommonModule,
     RegionRoutingModule,
-    HttpClientModule,
-    StoreModule.forFeature(fromRegionesData.regionesDataFeatureKey, fromRegionesData.reducer),
-    EffectsModule.forFeature([RegionesDataEffects])
+    HttpClientModule
   ],
   providers: [
     RegionPaisesService

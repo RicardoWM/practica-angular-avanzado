@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Pais } from '../../../store/regiones-data/pais.model';
 
 @Component({
   selector: 'prac-banco-paises',
@@ -7,6 +8,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaisesComponent implements OnInit {
+
+  @Input() public paises: Pais[];
 
   constructor() { }
 

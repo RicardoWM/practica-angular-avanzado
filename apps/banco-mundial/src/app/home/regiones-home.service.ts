@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Region } from '../region/store/regiones-data/region.model';
+import { Region } from '../store/regiones-data/region.model';
 
 @Injectable()
 

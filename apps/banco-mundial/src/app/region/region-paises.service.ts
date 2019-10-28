@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Region } from './store/regiones-data/region.model';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Pais } from './store/regiones-data/pais.model';
+import { Pais } from '../store/regiones-data/pais.model';
 import { map } from 'rxjs/operators';
+import { Region } from '../store/regiones-data/region.model';
+import { RegionesDataFacade } from '../store/regiones-data/regiones-data.service';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class RegionPaisesService {
 
@@ -16,7 +19,8 @@ export class RegionPaisesService {
   public paises$ = new BehaviorSubject<Pais[]>([]);
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private storeRegionesFacade: RegionesDataFacade
   ) { }
 
   setRegion(region: Region) {
@@ -27,25 +31,21 @@ export class RegionPaisesService {
   public selectRegion$ = () => this.region$.asObservable();
 
 
-  /* getPaises() {
-    let urlApiPaises
-  = `http://api.worldbank.org/v2/region/${this.region.id}/country?per_page=1000&format=json`;
+  getPaises(code: string) {
+    const urlApiPaises
+  = `http://api.worldbank.org/v2/region/${code}/country?per_page=1000&format=json`;
 
-    this.http.get(this.urlApiPaises)
+    this.http.get(urlApiPaises)
     .pipe(
       map(data => {
-        const rb: any[] = data[1];
-        const r = rb.filter(region => region.id !== '');
-        return r;
+        const paises: Pais[] = data[1];
+        return paises;
       })
     )
-    .subscribe(
-      regiones => {
-        if (regiones) {
-          this.regiones = regiones;
-          this.regiones$.next(this.regiones);
-        }
-      }
-    )
-  } */
+    .subscribe( (paises: Pais[]) => {
+      console.log(paises);
+      this.storeRegionesFacade.loadPaises(paises);
+    }
+    );
+  }
 }

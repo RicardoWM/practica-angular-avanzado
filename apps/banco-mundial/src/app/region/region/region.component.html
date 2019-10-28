@@ -1,3 +1,6 @@
 <div *ngIf="region$ | async as region">
     <prac-banco-region-select [region]="region"></prac-banco-region-select>
 </div>
+<div>
+    <prac-banco-paises [paises]="paises$ | async"></prac-banco-paises>
+</div>
