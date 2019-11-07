@@ -8,17 +8,14 @@ export const regionesDataFeatureKey = 'regionesData';
 
 export interface State {
   region: Region,
-  paises: Pais[]
+  paises: Pais[],
+  pais: Pais
 }
 
 export const initialState: State = {
-  region: {
-    id: '',
-    code: '',
-    iso2code: '',
-    name: ''
-  },
-  paises: []
+  region: null,
+  paises: [],
+  pais: null
 };
 
 
@@ -37,6 +34,12 @@ const regionesDataReducer = createReducer(
       ...state,
       paises: listPaises
     };
+  }),
+  on(RegionesDataActions.changePais, (state, { selectPais }) => {
+    return {
+      ...state,
+      pais: selectPais
+    }
   })
 );
 

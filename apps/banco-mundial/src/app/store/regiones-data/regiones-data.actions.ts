@@ -18,6 +18,10 @@ export const loadPaises = createAction(
   props<{ listPaises: Pais[] }>()
 );
 
+export const changePais = createAction(
+  '[RegionesData] Change Pais',
+  props<{ selectPais: Pais }>()
+);
 
 
 

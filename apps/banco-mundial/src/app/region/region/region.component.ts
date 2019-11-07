@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { Region } from '../../store/regiones-data/region.model';
 import { RegionesDataFacade } from '../../store/regiones-data/regiones-data.service';
 import { Pais } from '../../store/regiones-data/pais.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'prac-banco-region',
@@ -22,11 +23,17 @@ export class RegionComponent implements OnInit {
 
   constructor(
     public regionPaisesService: RegionPaisesService,
-    private regionDataFacade: RegionesDataFacade
+    private regionDataFacade: RegionesDataFacade,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.region$ = this.regionDataFacade.getRegion$();
     this.paises$ = this.regionDataFacade.getPaises$();
+  }
+
+  selectPais(pais: Pais) {
+    this.regionPaisesService.getPais(pais.id);
+    this.router.navigate(['/region/pais']);
   }
 }

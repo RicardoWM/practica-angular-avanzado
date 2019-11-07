@@ -1,6 +1,7 @@
+<h2 i18n>Países</h2>
 <div *ngIf="paises">
     <ul>
-        <li *ngFor="let pais of paises">
+        <li *ngFor="let pais of paises" (click)="choosePais(pais)">
             {{pais.name}}
         </li>
     </ul>

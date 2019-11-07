@@ -2,5 +2,6 @@
     <prac-banco-region-select [region]="region"></prac-banco-region-select>
 </div>
 <div>
-    <prac-banco-paises [paises]="paises$ | async"></prac-banco-paises>
+    <prac-banco-paises [paises]="paises$ | async" (choose)="selectPais($event)"></prac-banco-paises>
 </div>
+<button [routerLink]="['/']">Volver a Regiones</button>

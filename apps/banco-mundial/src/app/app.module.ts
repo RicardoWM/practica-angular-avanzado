@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import * as fromRegionesData from './store/regiones-data/regiones-data.reducer';
 import { RegionesDataEffects } from './store/regiones-data/regiones-data.effects';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { RegionesDataEffects } from './store/regiones-data/regiones-data.effects
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot({routerState: RouterState.Minimal}),
     StoreModule.forFeature(fromRegionesData.regionesDataFeatureKey, fromRegionesData.reducer),
-    EffectsModule.forFeature([RegionesDataEffects])
+    EffectsModule.forFeature([RegionesDataEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,6 +24,14 @@ export class RegionesDataFacade {
       );
     }
 
+    public changePais(pais: Pais) {
+      this.store.dispatch(
+        RegionDataActions.changePais({
+          selectPais: {...pais}
+        })
+      );
+    }
+
     public loadPaises(paises: Pais[]) {
       this.store.dispatch(
         RegionDataActions.loadPaises({
@@ -35,6 +43,10 @@ export class RegionesDataFacade {
 
     public getRegion$(): Observable<Region> {
       return this.store.select(RegionDataSelectors.getRegion);
+    }
+
+    public getPais$(): Observable<Pais> {
+      return this.store.select(RegionDataSelectors.getPais);
     }
 
     public getPaises$(): Observable<Pais[]> {

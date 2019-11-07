@@ -48,4 +48,22 @@ export class RegionPaisesService {
     }
     );
   }
+
+  getPais(code: string) {
+    const urlApiPais
+  = `http://api.worldbank.org/V2/country/${code}?format=json`;
+
+    this.http.get(urlApiPais)
+    .pipe(
+      map(data => {
+        const pais: Pais = data[1][0];
+        return pais;
+      })
+    )
+    .subscribe( (pais: Pais) => {
+      console.log(pais);
+      this.storeRegionesFacade.changePais(pais);
+    }
+    );
+  }
 }
