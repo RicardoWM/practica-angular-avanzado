@@ -4,4 +4,4 @@
 <div>
     <prac-banco-paises [paises]="paises$ | async" (choose)="selectPais($event)"></prac-banco-paises>
 </div>
-<button [routerLink]="['/']">Volver a Regiones</button>
+<button type="button" class="btn btn-light" [routerLink]="['/']">Volver a Regiones</button>

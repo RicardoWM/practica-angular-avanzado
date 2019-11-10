@@ -1,7 +1,7 @@
 <h2 i18n>Países</h2>
 <div *ngIf="paises">
     <ul>
-        <li *ngFor="let pais of paises" (click)="choosePais(pais)">
+        <li *ngFor="let pais of paises" (click)="choosePais(pais)" style="cursor: pointer;">
             {{pais.name}}
         </li>
     </ul>

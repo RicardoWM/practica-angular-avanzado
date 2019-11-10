@@ -1,5 +1,5 @@
 <h2 i18n>Regiones</h2>
-<div *ngFor="let reg of regiones" (click)="chooseRegion(reg)">
+<div *ngFor="let reg of regiones" (click)="chooseRegion(reg)" style="cursor: pointer; margin: 2%; border-bottom: 1px solid black;">
     <h4>{{reg.code}}</h4>
     <span>{{reg.name}}</span>
 </div>
