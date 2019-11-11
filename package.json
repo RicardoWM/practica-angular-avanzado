@@ -8,6 +8,7 @@
         "start": "ng serve",
         "build": "ng build",
         "test": "ng test",
+        "test:bm": "ng test banco-mundial --watch --verbose",
         "lint": "nx workspace-lint && ng lint",
         "e2e": "ng e2e",
         "e2e:bm": "ng e2e banco-mundial-e2e --watch ",

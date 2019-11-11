@@ -1218,6 +1218,11 @@
     tree-kill "1.2.1"
     webpack-sources "1.4.3"
 
+"@nguniversal/express-engine@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@nguniversal/express-engine/-/express-engine-8.1.1.tgz#253f2a484764cf183a679847a0c25c52d5b25ab9"
+  integrity sha512-LKfNnKb1BU1IyI/U7LcDgU744ptrn7fTYb3QqHAlGaozHUNRjXpNuBdkrcAS5+8UAhRlTllpSt1c+TmY2/tomA==
+
 "@nrwl/angular@8.7.0", "@nrwl/angular@^8.6.0":
   version "8.7.0"
   resolved "https://registry.yarnpkg.com/@nrwl/angular/-/angular-8.7.0.tgz#abd6e4bf55aa7e9c045d9ce66a1f009c01ac659f"
