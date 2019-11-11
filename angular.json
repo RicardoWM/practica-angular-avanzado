@@ -15,7 +15,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/apps/banco-mundial",
+                        "outputPath": "dist/browser",
                         "index": "apps/banco-mundial/src/index.html",
                         "main": "apps/banco-mundial/src/main.ts",
                         "polyfills": "apps/banco-mundial/src/polyfills.ts",
@@ -26,7 +26,9 @@
                             "apps/banco-mundial/src/assets",
                             "apps/banco-mundial/src/manifest.webmanifest"
                         ],
-                        "styles": ["apps/banco-mundial/src/styles.scss"],
+                        "styles": [
+                            "apps/banco-mundial/src/styles.scss"
+                        ],
                         "scripts": []
                     },
                     "configurations": {
@@ -126,6 +128,29 @@
                         "jestConfig": "apps/banco-mundial/jest.config.js",
                         "tsConfig": "apps/banco-mundial/tsconfig.spec.json",
                         "setupFile": "apps/banco-mundial/src/test-setup.ts"
+                    }
+                },
+                "server": {
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "dist/server",
+                        "main": "apps/banco-mundial/src/main.server.ts",
+                        "tsConfig": "apps/banco-mundial/tsconfig.server.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/banco-mundial/src/environments/environment.ts",
+                                    "with": "apps/banco-mundial/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "sourceMap": false,
+                            "optimization": {
+                                "scripts": false,
+                                "styles": true
+                            }
+                        }
                     }
                 }
             }

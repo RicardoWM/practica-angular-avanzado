@@ -32,7 +32,12 @@
         "help": "nx help",
         "i18n:banco-mundial": "ng xi18n banco-mundial --output-path src/locale",
         "build:banco-mundial-en": "ng build banco-mundial --configuration=production-en",
-        "start:banco-mundial-en": "npm run build:banco-mundial-en && angular-http-server --opne -p 8082 --path ./dist/apps/banco-mundial/en"
+        "start:banco-mundial-en": "npm run build:banco-mundial-en && angular-http-server --opne -p 8082 --path ./dist/apps/banco-mundial/en",
+        "start:ssr": "npm run build:ssr && npm run server:ssr",
+        "compile:server": "webpack --config webpack.server.config.js --progress --colors",
+        "serve:ssr": "node dist/server",
+        "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
+        "build:client-and-server-bundles": "ng build --prod && ng run banco-mundial:server:production --bundleDependencies all"
     },
     "private": true,
     "dependencies": {
@@ -52,10 +57,12 @@
         "@ngrx/router-store": "8.5.0",
         "@ngrx/store": "8.5.0",
         "@nguniversal/express-engine": "^8.1.1",
+        "@nguniversal/module-map-ngfactory-loader": "8.1.1",
         "@nrwl/angular": "^8.7.0",
         "@nrwl/schematics": "^8.7.0",
         "angular-http-server": "^1.9.0",
         "core-js": "^2.5.4",
+        "express": "^4.15.2",
         "rxjs": "~6.5.3",
         "zone.js": "^0.9.1"
     },
@@ -79,8 +86,10 @@
         "jest-preset-angular": "^8.0.0",
         "prettier": "1.18.2",
         "ts-jest": "24.0.0",
+        "ts-loader": "^5.2.0",
         "ts-node": "~7.0.0",
         "tslint": "~5.11.0",
-        "typescript": "~3.5.3"
+        "typescript": "~3.5.3",
+        "webpack-cli": "^3.1.0"
     }
 }
