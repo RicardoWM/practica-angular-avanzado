@@ -1,5 +1,7 @@
 import { visitHome, getNavbar, visitRegion, getButton, visitPais } from '../support/app.po';
 
+declare var context;
+
 describe('GIVEN: la app banco mundial', () => {
   beforeEach(() => visitHome());
 

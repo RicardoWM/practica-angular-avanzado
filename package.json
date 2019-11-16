@@ -33,7 +33,7 @@
         "i18n:banco-mundial": "ng xi18n banco-mundial --output-path src/locale",
         "build:banco-mundial-en": "ng build banco-mundial --configuration=production-en",
         "start:banco-mundial-en": "npm run build:banco-mundial-en && angular-http-server --opne -p 8082 --path ./dist/apps/banco-mundial/en",
-        "start:ssr": "npm run build:ssr && npm run server:ssr",
+        "start:ssr": "npm run build:ssr && npm run serve:ssr",
         "compile:server": "webpack --config webpack.server.config.js --progress --colors",
         "serve:ssr": "node dist/server",
         "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
