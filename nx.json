@@ -19,6 +19,15 @@
     },
     "shared-layout": {
       "tags": []
+    },
+    "pais": {
+      "tags": []
+    },
+    "external-pais-e2e": {
+      "tags": []
+    },
+    "external-pais": {
+      "tags": []
     }
   }
 }

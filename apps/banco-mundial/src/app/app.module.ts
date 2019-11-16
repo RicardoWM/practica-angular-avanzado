@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import * as fromRegionesData from './store/regiones-data/regiones-data.reducer';
 import { RegionesDataEffects } from './store/regiones-data/regiones-data.effects';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PaisModule } from '../../../../libs/pais/src/lib/pais.module';
 
 
 @NgModule({

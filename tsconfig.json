@@ -21,7 +21,8 @@
       ],
       "@practica-angular-avanzado/shared/layout": [
         "libs/shared/layout/src/index.ts"
-      ]
+      ],
+      "@practica-angular-avanzado/pais": ["libs/pais/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
